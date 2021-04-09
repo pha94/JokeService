@@ -1,8 +1,8 @@
 {
-  "name": "node-example",
+  "name": "JokeService",
   "version": "1.0.0",
-  "description": "This example is so cool.",
-  "main": "web.js",
+  "description": "Joke application.",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,8 +10,8 @@
     "example",
     "heroku"
   ],
-  "author": "jane-doe",
-  "license": "MIT",
+  "author": "Patrick",
+  "license": "EAA",
   "dependencies": {
     "express": "^4.9.8"
   },
