@@ -1,6 +1,6 @@
 const config = {
   databaseURI:
-    "mongodb+srv://dbpzh:<password>@jokeservice.gfzx8.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+    "mongodb+srv://dbpzh:<dbpzh123>@jokeservice.gfzx8.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
 localPort: 8080
 };
 
