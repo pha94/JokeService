@@ -43,4 +43,4 @@ const jokeServiceSchema = new mongoose.Schema({
   punchline: String,
 });
 
-document.getElementById("uploadBtn").
+document.getElementById("uploadBtn");
