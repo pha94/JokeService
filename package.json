@@ -1,19 +1,19 @@
 {
   "name": "JokeService",
   "version": "1.0.0",
-  "description": "Joke application.",
+  "description": "Joke Service Application.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "example",
     "heroku"
   ],
   "author": "Patrick",
-  "license": "EAA",
   "dependencies": {
-    "express": "^4.9.8"
+    "express": "^4.17.1",
+    "mongoose": "^5.12.3",
+    "mustache": "^4.2.0"
   },
   "engines": {
     "node": "14.x"
