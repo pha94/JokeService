@@ -2,6 +2,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
     <script src="/JS/index.js" defer></script>
     <link href="/CSS/styles.css" />
     <title>JokeService</title>
@@ -10,21 +11,19 @@
     <h1>Joke Service!</h1>
     <br />
     <div>
-      <input id="name" placeholder="Your name?" name="name" type="text" />
+      <input id="name" placeholder="Name" name="name" type="text" />
     </div>
     <br />
     <div>
-      <input id="setup" placeholder="The setup" name="Setup" type="text" />
+      <input id="setup" placeholder="Setup" name="Setup" type="text" />
     </div>
     <br />
     <div>
-      <input id="punchline" placeholder="Punchline" type="text" />
+      <input id="punchline" placeholder="Punch line" type="text" />
     </div>
     <br />
     <div>
       <button id="uploadBtn" type="submit">Upload</button>
     </div>
-
-    <div id="jokes"></div>
   </body>
 </html>

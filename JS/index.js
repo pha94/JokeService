@@ -1,3 +1,6 @@
+
+
+
 const mongoose = require("mongoose");
 const express = require("express");
 const app = express();
@@ -25,12 +28,6 @@ async function createJoke(name, setup, punchline) {
   return await jokes.create({ name, setup, punchline });
 }
 
-let joke = {
-  name: "",
-  setup: "",
-  punchline: "",
-};
-
 Joke.create = (name, setup, punchline) => {
   Joke.name = name;
   Joke.setup = setup;
@@ -43,4 +40,27 @@ const jokeServiceSchema = new mongoose.Schema({
   punchline: String,
 });
 
-document.getElementById("uploadBtn");
+document.getElementById("uploadBtn").addEventListener("click", () => {
+  let name = document.getElementById("name").value;
+  let setup = document.getElementById("setup").value;
+  let punchline = document.getElementById("punchline").value;
+  if (!name.equals("") && !setup.equals("") && !punchline.equals("")) {
+    jokes.create(name, setup, punchline);
+  }
+});
+
+async function generateUserTable(jokes) {
+  let template = await getText("/index.hbs");
+  let compiledTemplate = Handlebars.compile(template);
+  return compiledTemplate({ jokes });
+}
+
+async function main() {
+  try {
+    let jokes = await jokes.find().all();
+    document.body.innerHTML = await generateUserTable(jokes);
+  } catch (e) {
+    console.log(e.name + ": " + e.message);
+  }
+}
+main();
