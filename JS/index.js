@@ -1,19 +1,21 @@
-const mongoose = require("mongoose");
+const mongooseDB = require("mongoose");
 const express = require("express");
 const app = express();
 const PORT = 3000;
-const jokes = mongoose.model("JokeServiceDB.JokeService", jokeServiceSchema);
+const jokes = mongooseDB.model("JokeServiceDB.JokeService", jokeServiceSchema);
 
-mongoose.connect("mongodb://localhost:27017/JokeServiceDB.JokeService", {
+mongooseDB.connect("mongodb://localhost:27017/JokeServiceDB.JokeService", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
 
-mongoose.connection.on("error", (err) => {
+console.log("hej");
+
+mongooseDB.connection.on("error", (err) => {
   console.log("err", err);
 });
 
-mongoose.connection.on("connected", (err, res) => {
+mongooseDB.connection.on("connected", (err, res) => {
   console.log("mongoose is connected");
 });
 
@@ -31,7 +33,7 @@ Joke.create = (name, setup, punchline) => {
   Joke.punchline = punchline;
 };
 
-const jokeServiceSchema = new mongoose.Schema({
+const jokeServiceSchema = new mongooseDB.Schema({
   name: String,
   setup: String,
   punchline: String,
@@ -41,6 +43,7 @@ document.getElementById("uploadBtn").addEventListener("click", () => {
   let name = document.getElementById("name").value;
   let setup = document.getElementById("setup").value;
   let punchline = document.getElementById("punchline").value;
+  console.log("button");
   if (!name.equals("") && !setup.equals("") && !punchline.equals("")) {
     jokes.create(name, setup, punchline);
   }
