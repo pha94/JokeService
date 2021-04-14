@@ -1,7 +1,7 @@
 const controller = require("../Controller/controller");
 const express = require("express");
 const app = express();
-const config = require("./config");
+const config = require("/config");
 
 app.use(express.static(__dirname + "/FrontEnd"));
 app.use(express.json());
