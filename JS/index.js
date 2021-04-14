@@ -56,7 +56,7 @@ async function generateUserTable(jokes) {
 
 async function main() {
   try {
-    let jokes = await jokes.find().all();
+    let jokes = await jokes.find().all().exec();
     document.body.innerHTML = await generateUserTable(jokes);
   } catch (e) {
     console.log(e.name + ": " + e.message);
