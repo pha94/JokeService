@@ -20,7 +20,34 @@ app.get("/", async (request, response) => {
   }
 });
 
-app.post("/", async (request, response) => {
+app.get("/api/jokes", async (request, response) => {
+  try {
+    let jokes = await controller.getJokes();
+    response.send(jokes);
+  } catch (e) {
+    sendStatus(e, response);
+  }
+});
+
+app.get("/api/othersites", async (request, response) => {
+  try {
+    let jokes = await controller.getJokes();
+    response.send(jokes);
+  } catch (e) {
+    sendStatus(e, response);
+  }
+});
+
+app.get("/api/otherjokes/:site", async (request, response) => {
+  try {
+    let jokes = await controller.getJokes();
+    response.send(jokes);
+  } catch (e) {
+    sendStatus(e, response);
+  }
+});
+
+app.post("/api/jokes", async (request, response) => {
   try {
     let { name, setup, punchline } = request.body;
     await controller.createJoke(name, setup, punchline);
