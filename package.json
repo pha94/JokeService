@@ -1,5 +1,5 @@
 {
-  "name": "JokeService",
+  "name": "jokeservice",
   "version": "1.0.0",
   "description": "Joke Service Application.",
   "main": "/Frontend/index.js",
