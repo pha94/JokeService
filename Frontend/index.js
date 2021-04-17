@@ -1,4 +1,7 @@
-import { createJoke, getJokes } from "Controller";
+//import { createJoke, getJokes } from "Controller";
+//const controller = require("./Controller/cotroller");
+let controller = await import("./Controller/cotroller");
+console.log(module.keyValue);
 
 document.getElementById("uploadBtn").addEventListener("click", async () => {
   let name = document.getElementById("name").value;
@@ -22,7 +25,7 @@ async function generateUserTable(jokes) {
 
 async function main() {
   try {
-    let jokes = await getJokes();
+    let jokes = await controller.getJokes();
     document.body.innerHTML = await generateUserTable(jokes);
   } catch (e) {
     console.log(e.name + ": " + e.message);
