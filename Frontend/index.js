@@ -7,6 +7,9 @@ document.getElementById("uploadBtn").addEventListener("click", async () => {
   console.log("button");
   if (!name.equals("") && !setup.equals("") && !punchline.equals("")) {
     jokes.create(name, setup, punchline);
+    document.getElementById("name").value = "";
+    document.getElementById("setup").value = "";
+    document.getElementById("punchline").value = "";
   }
 });
 
@@ -18,7 +21,7 @@ async function generateUserTable(jokes) {
 
 async function main() {
   try {
-    let jokes = await jokes.find().all().exec();
+    let jokes = await controller.getJokes();
     document.body.innerHTML = await generateUserTable(jokes);
   } catch (e) {
     console.log(e.name + ": " + e.message);
