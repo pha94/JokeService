@@ -1,3 +1,4 @@
+const controller = require("../Controller/controller");
 document.getElementById("uploadBtn").addEventListener("click", async () => {
   let name = document.getElementById("name").value;
   let setup = document.getElementById("setup").value;
