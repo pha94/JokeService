@@ -7,7 +7,7 @@ mongoose.connect(config.databaseURI, {
   useUnifiedTopology: true,
 });
 
-exports.createJoke = function (name, setup, punchline) {
+export function createJoke (name, setup, punchline) {
   return await jokes.create({
     name,
     setup,
@@ -15,6 +15,6 @@ exports.createJoke = function (name, setup, punchline) {
   });
 };
 
-exports.getJokes = function () {
+export function getJokes() {
   return jokes.find().exec();
 };
