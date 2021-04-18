@@ -1,4 +1,4 @@
-import { createJoke, getJokes } from '../Controller/controller.js';
+import { createJoke, getJokes } from '../controller/controller.js';
 
 document.getElementById("uploadBtn").addEventListener("click", async () => {
   let name = document.getElementById("name").value;
@@ -14,7 +14,7 @@ document.getElementById("uploadBtn").addEventListener("click", async () => {
   }
 });
 
-async function generateUserTable(jokes) {
+async function generateJokes(jokes) {
   let template = await getText("./index.hbs");
   let compiledTemplate = Handlebars.compile(template);
   return compiledTemplate({ jokes });
@@ -23,7 +23,7 @@ async function generateUserTable(jokes) {
 async function main() {
   try {
     let jokes = await getJokes();
-    document.body.innerHTML = await generateUserTable(jokes);
+    document.body.innerHTML = await generateJokes(jokes);
   } catch (e) {
     console.log(e.name + ": " + e.message);
   }
