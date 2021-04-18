@@ -1,12 +1,12 @@
-import { Schema, model } from "mongoose";
+import mongoose from "mongoose";
 
-const jokeServiceSchema = new Schema({
+const jokeServiceSchema = new mongoose.Schema({
   name: String,
   setup: String,
   punchline: String,
 });
 
-export default model("JokeServiceDB.JokeService", jokeServiceSchema);
 
-
+  export default mongoose.model("DBJS", jokeServiceSchema);
+  
 

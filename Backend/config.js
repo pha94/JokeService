@@ -1,6 +1,7 @@
 const config = {
-  databaseURI: "mongodb://localhost:27017/JokeServiceDB.JokeService", // or MongoDB Atlas connection URI
+  databaseURI:
+    "mongodb+srv://dbpzh:dbpzh123@jokeservice.gfzx8.mongodb.net/DBJS?retryWrites=true&w=majority", // MongoDB Atlas connection URI
   localPort: 8080,
 };
 
-module.exports = config;
+export default config;

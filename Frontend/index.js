@@ -15,7 +15,7 @@ document.getElementById("uploadBtn").addEventListener("click", async () => {
 });
 
 async function generateUserTable(jokes) {
-  let template = await getText("/index.hbs");
+  let template = await getText("./index.hbs");
   let compiledTemplate = Handlebars.compile(template);
   return compiledTemplate({ jokes });
 }
