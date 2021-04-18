@@ -12,6 +12,9 @@
   ],
   "author": "Patrick",
   "dependencies": {
+    "express": "^4.17.1",
+    "mustache": "^4.2.0",
+    "should": "^13.2.3",
     "supertest": "^5.0.0"
   },
   "engines": {
