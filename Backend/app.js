@@ -1,9 +1,9 @@
 import { getJokes, createJoke } from "../Controller/controller.js";
 import express from "express";
-import config from "./config.js"; // mongoDB
+import config from "./config.js"; // MongoDB
 const app = express();
 
-app.use(express.static('/Frontend'));
+app.use(express.static("/Frontend"));
 app.use(express.json());
 
 const port = process.env.PORT || config.localPort; // Heroku
@@ -12,8 +12,9 @@ console.log("Listening on port " + port + " ...");
 
 app.get("/", async (request, response) => {
   try {
-    let jokes = await getJokes();
-    response.send(jokes);
+    // let jokes = await getJokes();
+    // response.send(jokes);
+    response.sendFile("/index.html", { root: './Frontend' });
   } catch (e) {
     sendStatus(e, response);
   }

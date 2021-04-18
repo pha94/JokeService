@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 import jokes from "../BackEnd/jokes.js";
 import config from "../BackEnd/config.js";
 
+
 mongoose.connect(
   config.databaseURI,
   {
