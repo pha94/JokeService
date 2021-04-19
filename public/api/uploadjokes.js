@@ -1,4 +1,4 @@
-import { createJoke, getJokes } from '../controller/controller.js';
+import controller from '../controller/controller.js';
 
 document.getElementById("uploadBtn").addEventListener("click", async () => {
   let name = document.getElementById("name").value;
@@ -6,7 +6,7 @@ document.getElementById("uploadBtn").addEventListener("click", async () => {
   let punchline = document.getElementById("punchline").value;
   console.log("button");
   if (!name.equals("") && !setup.equals("") && !punchline.equals("")) {
-    await createJoke(name, setup, punchline);
+    await controller.createJoke(name, setup, punchline);
     document.getElementById("name").value = "";
     document.getElementById("setup").value = "";
     document.getElementById("punchline").value = "";
@@ -14,7 +14,7 @@ document.getElementById("uploadBtn").addEventListener("click", async () => {
 });
 
 async function generateJokes(jokes) {
-  let template = await getText("./index.hbs");
+  let template = await getText("./jokes.hbs");
   let compiledTemplate = Handlebars.compile(template);
   return compiledTemplate({ jokes });
 }
