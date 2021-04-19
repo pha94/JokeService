@@ -4,10 +4,9 @@ document.getElementById("uploadBtn").addEventListener("click", async () => {
   let name = document.getElementById("name").value;
   let setup = document.getElementById("setup").value;
   let punchline = document.getElementById("punchline").value;
-  await createJoke(name, setup, punchline);
   console.log("button");
   if (!name.equals("") && !setup.equals("") && !punchline.equals("")) {
-    jokes.create(name, setup, punchline);
+    await createJoke(name, setup, punchline);
     document.getElementById("name").value = "";
     document.getElementById("setup").value = "";
     document.getElementById("punchline").value = "";
