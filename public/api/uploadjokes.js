@@ -1,4 +1,4 @@
-import controller from '../controller/controller.js';
+import controller from '../../controller/controller.js';
 
 document.getElementById("uploadBtn").addEventListener("click", async () => {
   let name = document.getElementById("name").value;
@@ -14,7 +14,7 @@ document.getElementById("uploadBtn").addEventListener("click", async () => {
 });
 
 async function generateJokes(jokes) {
-  let template = await getText("./jokes.hbs");
+  let template = await getText('./jokes.hbs');
   let compiledTemplate = Handlebars.compile(template);
   return compiledTemplate({ jokes });
 }

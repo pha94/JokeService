@@ -3,7 +3,7 @@ import express from "express";
 import config from "./config.js"; // MongoDB
 const app = express();
 
-app.use(express.static("/public"));
+app.use(express.static("./public"));
 app.use(express.json());
 
 const port = process.env.PORT || config.localPort; // Heroku
