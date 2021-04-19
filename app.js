@@ -1,6 +1,6 @@
-import { getJokes, createJoke } from "../controller/controller.js";
+import { getJokes, createJoke } from "./controller/controller.js";
 import express from "express";
-import config from "./config.js"; // MongoDB
+import config from "./backend/config.js"; // MongoDB
 const app = express();
 
 app.use(express.static("/frontend"));
