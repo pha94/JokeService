@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
-import jokes from "../backend/jokes.js";
-import config from "../backend/config.js";
+import jokes from "../models/jokes.js";
+import config from "../config.js";
 
 
 mongoose.connect(

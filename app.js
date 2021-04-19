@@ -1,9 +1,9 @@
 import { getJokes, createJoke } from "./controller/controller.js";
 import express from "express";
-import config from "./backend/config.js"; // MongoDB
+import config from "./config.js"; // MongoDB
 const app = express();
 
-app.use(express.static("/frontend"));
+app.use(express.static("/public"));
 app.use(express.json());
 
 const port = process.env.PORT || config.localPort; // Heroku
@@ -12,7 +12,7 @@ console.log("Listening on port " + port + " ...");
 
 app.get("/", async (request, response) => {
   try {
-    response.sendFile("/index.html", { root: "./frontend" });
+    response.sendFile("/index.html", { root: "./public" });
   } catch (e) {
     sendStatus(e, response);
   }
@@ -20,7 +20,7 @@ app.get("/", async (request, response) => {
 
 app.get("/api/jokes", async (request, response) => {
   try {
-    response.sendFile("/jokes.html", { root: "./frontend/api" });
+    response.sendFile("/jokes.html", { root: "./public/api" });
   } catch (e) {
     sendStatus(e, response);
   }
@@ -28,7 +28,7 @@ app.get("/api/jokes", async (request, response) => {
 
 app.get("/api/othersites", async (request, response) => {
   try {
-    response.sendFile("/othersites.html", { root: "./frontend/api" });
+    response.sendFile("/othersites.html", { root: "./public/api" });
   } catch (e) {
     sendStatus(e, response);
   }
@@ -36,7 +36,7 @@ app.get("/api/othersites", async (request, response) => {
 
 app.get("/api/otherjokes/:site", async (request, response) => {
   try {
-    response.sendFile("/otherjokes.html", { root: "./frontend/api" });
+    response.sendFile("/otherjokes.html", { root: "./public/api" });
   } catch (e) {
     sendStatus(e, response);
   }
