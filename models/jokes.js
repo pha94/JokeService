@@ -6,7 +6,4 @@ const jokeServiceSchema = new mongoose.Schema({
   punchline: String,
 });
 
-
-  export default mongoose.model("DBJS", jokeServiceSchema);
-  
-
+export default mongoose.model("DBJS", jokeServiceSchema);
