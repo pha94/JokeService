@@ -1,4 +1,4 @@
-import { createJoke } from "./Controller/controller.js";
+import { createJoke } from "./controller/controller.js";
 import express from "express";
 import config from "./config.js"; // MongoDB
 const app = express();
