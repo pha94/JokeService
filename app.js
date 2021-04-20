@@ -1,4 +1,4 @@
-import { getJokes, createJoke } from "./controller/controller.js";
+import { createJoke } from "./controller/controller.js";
 import express from "express";
 import config from "./config.js"; // MongoDB
 const app = express();
@@ -12,7 +12,7 @@ console.log("Listening on port " + port + " ...");
 
 app.get("/", async (request, response) => {
   try {
-    response.sendFile("/index.html", { root: "./public" });
+    response.sendFile("/index.html", { root: "./public/api" });
   } catch (e) {
     sendStatus(e, response);
   }
@@ -37,16 +37,6 @@ app.get("/api/othersites", async (request, response) => {
 app.get("/api/otherjokes/:site", async (request, response) => {
   try {
     response.sendFile("/otherjokes.html", { root: "./public/api" });
-  } catch (e) {
-    sendStatus(e, response);
-  }
-});
-
-app.post("/api/jokes", async (request, response) => {
-  try {
-    let { name, setup, punchline } = request.body;
-    await createJoke(name, setup, punchline);
-    response.send({ message: "Joke saved!" });
   } catch (e) {
     sendStatus(e, response);
   }
