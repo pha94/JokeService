@@ -4,7 +4,9 @@ const router = express.Router();
 
 router.get("/api/othersites", async (request, response) => {
   try {
-    response.sendFile("/othersites.html", { root: "../public/api" });
+    response.sendFile("/othersites.html", {
+      root: "../jokeservice/public/api",
+    });
   } catch (e) {
     sendStatus(e, response);
   }
