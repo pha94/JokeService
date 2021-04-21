@@ -10,9 +10,9 @@ router.get("/api/jokes", async (request, response) => {
   } catch (e) {
     sendStatus(e, response);
   }
-});
+ });
 
-router.post("/api/jokes", async (request, response) => {
+ router.post("/api/jokes", async (request, response) => {
   try {
     let { name, setup, punchline } = request.body;
     await createJoke(name, setup, punchline);
@@ -20,12 +20,12 @@ router.post("/api/jokes", async (request, response) => {
   } catch (e) {
     sendStatus(e, response);
   }
-});
+ });
 
-function sendStatus(e, response) {
+ function sendStatus(e, response) {
   console.error("Exception: " + e);
   if (e.stack) console.error(e.stack);
   response.status(500).send(e);
-}
+ }
 
-export default router;
+ export default router;
