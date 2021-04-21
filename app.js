@@ -7,9 +7,9 @@ import othersites from "./routes/othersites.js";
 
 app.use(express.static("./public"));
 app.use(express.json());
-app.use("/jokes", jokes);
-app.use("/otherjokes", otherjokes);
-app.use("/othersites", othersites);
+app.use(jokes);
+app.use(otherjokes);
+app.use(othersites);
 
 const port = process.env.PORT || config.localPort; // Heroku
 app.listen(port);

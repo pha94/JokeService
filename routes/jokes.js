@@ -5,7 +5,7 @@ const router = express.Router();
 router
   .get("/api/jokes", async (request, response) => {
     try {
-      response.sendFile("/jokes.html", { root: "../public/api" });
+      response.sendFile("/jokes.html", { root: "../jokeservice/public/api" });
       let jokes = getJokes();
       // getAllJokes(jokes);
     } catch (e) {
