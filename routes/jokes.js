@@ -7,7 +7,7 @@ router
     try {
       response.sendFile("/jokes.html", { root: "../public/api" });
       let jokes = getJokes();
-      getAllJokes(jokes);
+      // getAllJokes(jokes);
     } catch (e) {
       sendStatus(e, response);
     }
@@ -29,7 +29,7 @@ router
           }
         });
       response.send({ message: "Joke saved!" });
-      getAllJokes();
+      // getAllJokes();
     } catch (e) {
       sendStatus(e, response);
     }

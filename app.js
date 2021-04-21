@@ -1,12 +1,15 @@
 import express from "express";
 const app = express();
 import config from "./config.js"; // MongoDB
+import jokes from "./routes/jokes.js";
+import otherjokes from "./routes/otherjokes.js";
+import othersites from "./routes/othersites.js";
 
 app.use(express.static("./public"));
 app.use(express.json());
-app.use('/jokes', require('./routes/jokes'));
-app.use('/otherjokes', require('./routes/otherjokes'));
-app.use('/othersites', require('./routes/othersites'));
+app.use("/api/jokes", jokes);
+app.use("/otherjokes", otherjokes);
+app.use("/othersites", othersites);
 
 const port = process.env.PORT || config.localPort; // Heroku
 app.listen(port);

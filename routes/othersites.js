@@ -2,7 +2,7 @@ import { getJokes, createJoke } from "../controller/controller.js";
 import express from "express";
 const router = express.Router();
 
-app.get("/api/othersites", async (request, response) => {
+router.get("/api/othersites", async (request, response) => {
   try {
     response.sendFile("/othersites.html", { root: "../public/api" });
   } catch (e) {
