@@ -14,6 +14,7 @@ router
   })
   .post("/api/jokes", async (request, response) => {
     try {
+      console.log("Print her!");
       document
         .getElementById("uploadBtn")
         .addEventListener("click", async () => {
