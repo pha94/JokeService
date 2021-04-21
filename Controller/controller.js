@@ -20,6 +20,8 @@ export async function createJoke(name, setup, punchline) {
   });
 }
 
+createJoke("Bo")
+
 export function getJokes() {
   return jokes.find().exec();
 }
