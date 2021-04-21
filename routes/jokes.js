@@ -22,12 +22,6 @@ router.post("/api/jokes", async (request, response) => {
   }
 });
 
-async function getAllJokes(jokes) {
-  let template = await getText("./jokes.hbs");
-  let compiledTemplate = Handlebars.compile(template);
-  return compiledTemplate({ jokes });
-}
-
 function sendStatus(e, response) {
   console.error("Exception: " + e);
   if (e.stack) console.error(e.stack);

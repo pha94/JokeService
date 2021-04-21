@@ -1,7 +1,6 @@
 const jokeUrl = "/api/jokes";
 const uploadBtn = document.getElementById("uploadBtn");
 
-
 //* Post til server
 async function post(url, object) {
   const respons = await fetch(url, {
@@ -44,4 +43,3 @@ uploadBtn.addEventListener("click", async () => {
   }
   console.log("Joke saved XD");
 });
-
