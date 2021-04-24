@@ -16,7 +16,6 @@ async function getText(url) {
 }
 
 async function generateJokes(jokes) {
-  let respons = await get("/api/jokes");
   let template = await getText("./api/jokes.hbs");
   let compiledTemplate = Handlebars.compile(template);
   return compiledTemplate({ jokes });
@@ -24,9 +23,10 @@ async function generateJokes(jokes) {
 
 async function getJokes() {
   try {
+    respons = await get("/api/jokes");
     console.log("getJokes()");
     document.getElementById("joke-container").innerHTML = await generateJokes(
-      "/api/jokes"
+      respons
     );
     console.log(respons);
   } catch (error) {
