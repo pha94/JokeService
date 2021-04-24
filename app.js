@@ -2,14 +2,10 @@ import express from "express";
 const app = express();
 import config from "./config.js"; // MongoDB
 import jokes from "./routes/jokes.js";
-import otherjokes from "./routes/otherjokes.js";
-import othersites from "./routes/othersites.js";
 
 app.use(express.static("./public"));
 app.use(express.json());
 app.use(jokes);
-app.use(otherjokes);
-app.use(othersites);
 
 const port = process.env.PORT || config.localPort; // Heroku
 app.listen(port);
