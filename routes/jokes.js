@@ -6,7 +6,7 @@ router.get("/api/jokes", async (request, response) => {
   try {
     response.sendFile("/jokes.html", { root: "../jokeservice/public/api" });
     let jokes = await getJokes();
-    response.send(jokes);
+    //response.send(jokes);
   } catch (e) {
     sendStatus(e, response);
   }

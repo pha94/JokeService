@@ -1,13 +1,17 @@
-const jokesUrl = "/api/jokes";
-
 //* Henter hjemmesiden
 async function get(url) {
   const respons = await fetch(url);
-  console.log(respons);
   if (respons.status !== 200) {
     throw new Error(respons.status);
   }
   return await respons.json();
+}
+
+async function getText(url) {
+  const respons = await fetch(url);
+  if (respons.status !== 200) // OK
+      throw new Error(respons.status);
+  return await respons.text();
 }
 
 async function generateJokes(jokes) {
@@ -16,10 +20,11 @@ async function generateJokes(jokes) {
   return compiledTemplate({ jokes });
 }
 
-async function getJokes(url) {
+async function getJokes() {
   try {
-    let respons = await get(url);
-    document.getElementById("joke-container").innerHTML += await generateJokes(
+    let respons = await get("/api/jokes");
+    console.log("getJokes()");
+    document.getElementById("joke-container").innerHTML = await generateJokes(
       respons
     );
     console.log(respons);
@@ -27,4 +32,4 @@ async function getJokes(url) {
     console.log(error);
   }
 }
-getJokes(jokesUrl);
+getJokes();
