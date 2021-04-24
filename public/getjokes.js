@@ -23,7 +23,7 @@ async function generateJokes(jokes) {
 
 async function getJokes() {
   try {
-    respons = await get("/api/jokes");
+    respons = await get("./api/jokes");
     console.log("getJokes()");
     document.getElementById("joke-container").innerHTML = await generateJokes(
       respons
