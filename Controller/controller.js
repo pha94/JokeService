@@ -2,7 +2,6 @@ import mongoose from "mongoose";
 import jokes from "../models/jokes.js";
 import config from "../config.js";
 
-
 mongoose.connect(
   config.databaseURI,
   {
@@ -13,14 +12,26 @@ mongoose.connect(
 );
 
 export async function createJoke(name, setup, punchline) {
-  return await jokes.create({
-    name,
-    setup,
-    punchline,
-  });
+  const jokeSetup = await jokes.findOne().where("setup").equals(setup).exec();
+  const jokePunchline = await jokes
+    .findOne()
+    .where("punchline")
+    .equals(punchline)
+    .exec();
+  if (!jokeSetup && !jokePunchline) {
+    return await jokes.create({
+      name,
+      setup,
+      punchline,
+    });
+  }
 }
 
-createJoke("Patrick - Kongen af far humor", "Hvad kalder man to lamaer, der spiser hestenes hø?", "Ballamaere");
+createJoke(
+  "Patrick - Kongen af far humor",
+  "Hvad kalder man to lamaer, der spiser hestenes hø?",
+  "Ballamaere"
+);
 
 export function getJokes() {
   return jokes.find().exec();
