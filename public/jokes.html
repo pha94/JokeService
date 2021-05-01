@@ -15,7 +15,6 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
-    <script type="module" src="./main.js"></script>
     <title class="title">JokeService</title>
   </head>
   <body>
@@ -59,7 +58,7 @@
         </div>
       </nav>
       <br />
-      <form action="/api/jokes" method="post"></form>
+      <form action="/api/jokes" method="post">
       <div>
         <input id="name" placeholder="Name" name="name" type="text" />
       </div>
@@ -96,6 +95,6 @@
       integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc"
       crossorigin="anonymous"
     ></script>
-        
+    <script src="./jokes.js"></script>    
   </body>
 </html>
