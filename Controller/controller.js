@@ -27,11 +27,11 @@ export async function createJoke(name, setup, punchline) {
   }
 }
 
-createJoke(
-  "Patrick - Kongen af far humor",
-  "Hvad kalder man to lamaer, der spiser hestenes hø?",
-  "Ballamaere"
-);
+// createJoke(
+//   "Patrick - Kongen af far humor",
+//   "Hvad kalder man to lamaer, der spiser hestenes hø?",
+//   "Ballamaere"
+// );
 
 export function getJokes() {
   return jokes.find().exec();

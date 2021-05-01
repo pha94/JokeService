@@ -4,7 +4,7 @@ const router = express.Router();
 
 router.get("/api/jokes", async (request, response) => {
   try {
-    response.sendFile("/jokes.html", { root: "../jokeservice/public/api" });
+    response.sendFile("/jokes.html", { root: "../jokeservice/public" });
     let jokes = await getJokes();
     //response.send(jokes);
   } catch (e) {
@@ -32,7 +32,7 @@ router.post("/api/jokes", async (request, response) => {
 router.get("/api/othersites", async (request, response) => {
   try {
     response.sendFile("/othersites.html", {
-      root: "../jokeservice/public/api",
+      root: "../jokeservice/public",
     });
   } catch (e) {
     sendStatus(e, response);
@@ -41,7 +41,7 @@ router.get("/api/othersites", async (request, response) => {
 router.get("/api/otherjokes/:site", async (request, response) => {
   try {
     response.sendFile("/otherjokes.html", {
-      root: "../jokeservice/public/api",
+      root: "../jokeservice/public",
     });
   } catch (e) {
     sendStatus(e, response);

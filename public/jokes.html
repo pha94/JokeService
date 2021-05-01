@@ -15,7 +15,8 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
-    <title class="title">JokeService</title>
+    <script type="module" src="./js/jokes.js"></script>
+    <!-- <title class="title">JokeService</title> -->
   </head>
   <body>
     <center>
@@ -61,6 +62,7 @@
         </div>
       </nav>
       <br />
+      <form action="/jokes.js" method="post"></form>
       <div>
         <input id="name" placeholder="Name" name="name" type="text" />
       </div>
@@ -70,11 +72,10 @@
       </div>
       <br />
       <div>
-        <input id="punchline" placeholder="Punch line" type="text" />
+        <input id="punchline" placeholder="Punch line" name="punchline" type="text" />
       </div>
       <br />
       <div>
-        <form action="/send" method="post"></form>
         <button
           class="btn btn-primary"
           id="uploadBtn"
@@ -98,6 +99,6 @@
       integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc"
       crossorigin="anonymous"
     ></script>
-    <script src="../uploadjoke.js"></script>
+        
   </body>
 </html>
