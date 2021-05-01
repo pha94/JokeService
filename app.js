@@ -12,17 +12,5 @@ app.use(express.urlencoded({ extended: true }));
 app.use(jokesRouter);
 
 
-async function main() {
-  try {
-    // await controller.generateOtherJokes();
-    // await controller.generateOtherSites();
-    // let jokes = await generateJokes("/api/jokes");
-    // console.log("Hello "+ jokes);
-  } catch (error) {
-    console.log(error.name + ": " + error.message);
-  }
-}
-
-// main();
 
 export default app;

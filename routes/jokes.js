@@ -1,14 +1,17 @@
 import express from "express";
-import {createJoke} from "../controller/controller.js";
+import { createJoke, getJokes } from "../controller/controller.js";
 const router = express.Router();
 
 router.use(express.static("./public"));
 router.use(express.json());
 
-
-router.get("/api/jokes", async (request, response) => {
+//*Fejlen er formentlig herunder
+router
+  .get("/api/jokes", async (request, response) => {
     try {
-      response.sendFile("/jokes.html", { root: "../JokeService/public" });
+      let jokes = await getJokes();
+      response.send(jokes);
+      // response.sendFile("/jokes.html", { root: "../JokeService/public" });
     } catch (e) {
       sendStatus(e, response);
     }
@@ -20,10 +23,9 @@ router.get("/api/jokes", async (request, response) => {
       let setup = request.body.setup;
       let punchline = request.body.punchline;
       const joke = await createJoke(name, setup, punchline);
-  
       if (joke !== undefined) {
         response.send({ message: "Joke saved!" });
-      } else if (!joke) {
+      } else {
         response.send({
           message: "Joke ikke oprettet, da den findes allerede",
         });
@@ -51,7 +53,6 @@ router.get("/api/jokes", async (request, response) => {
 //     sendStatus(e, response);
 //   }
 // });
-
 
 function sendStatus(e, response) {
   console.error("Exception: " + e);

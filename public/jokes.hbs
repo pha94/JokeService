@@ -1,4 +1,4 @@
-{{#each joke}}
+{{!-- {{#each joke}}
 <div class="card">
     <div class="card-header">
         {{setup}}
@@ -10,4 +10,15 @@
         </blockquote>
     </div>
 </div>
-{{/each}}
+{{/each}} --}}
+
+
+<table>
+    {{#each joke}}
+    <tr>
+        <td>{{name}}</td>
+        <td>{{setup}}</td>
+        <td>{{punchline}}</td>
+    </tr>
+    {{/each}}
+</table>
