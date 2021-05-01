@@ -1,6 +1,8 @@
 import mongoose from "mongoose";
 import jokes from "../models/jokes.js";
 import config from "../config.js";
+// import router from "../routes/jokes.js";
+// import app from "../app.js";
 
 mongoose.connect(
   config.databaseURI,
@@ -13,11 +15,7 @@ mongoose.connect(
 
 export async function createJoke(name, setup, punchline) {
   const jokeSetup = await jokes.findOne().where("setup").equals(setup).exec();
-  const jokePunchline = await jokes
-    .findOne()
-    .where("punchline")
-    .equals(punchline)
-    .exec();
+  const jokePunchline = await jokes.findOne().where("punchline").equals(punchline).exec();
   if (!jokeSetup && !jokePunchline) {
     return await jokes.create({
       name,
