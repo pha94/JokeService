@@ -1,8 +1,8 @@
 const jokeContainer = document.getElementById("jokeContainer");
+const sitesContainer = document.getElementById("sitesContainer");
 const uploadBtn = document.getElementById("uploadBtn");
 
-
- async function get(url) {
+async function get(url) {
   const respons = await fetch(url);
   if (respons.status !== 200) {
     throw new Error(respons.status);
@@ -18,7 +18,6 @@ async function post(url, object) {
   });
   clearFields();
   if (respons.status !== 201) {
-    // Created
     throw new Error(respons.status);
   }
   return await respons.json();
@@ -27,49 +26,44 @@ async function post(url, object) {
 async function getText(url) {
   const respons = await fetch(url);
   if (respons.status !== 200)
-    // OK
     throw new Error(respons.status);
   return await respons.text();
 }
 
-async function generateJokesTemplate(jokes) {
-  let template = await getText("./templates/jokes.hbs");
+async function generateTemplate(hbs, data) {
+  let template = await getText(hbs);
   let compiledTemplate = Handlebars.compile(template);
-  return compiledTemplate({ jokes });
+  return compiledTemplate({ jokes: data });
 }
 
 async function generateJokes(url) {
   try {
     let jokes = await get(url);
-    jokeContainer.innerHTML += await generateJokesTemplate(jokes);
+    jokeContainer.innerHTML += await generateTemplate(
+      "./templates/jokes.hbs",
+      jokes
+    );
   } catch (error) {
     console.log(error);
   }
 }
 
-// async function postJoke(url) {
-//   try {
-//     const joke = await post(url, createJoke);
-//     jokeContainer.innerHTML += await generateJokesTemplate(jokes);
-//   } catch (error) {
-//     console.log();
-//   }
-// }
-
-// exports.module = function clearFields() {
-//   document.getElementById("name").innerHTML = "";
-//   document.getElementById("setup").innerHTML= "";
-//   document.getElementById("punchline").innerHTML = "";
-// }
+async function generateOtherSites(url) {
+  try {
+    let links = await get(url);
+    sitesContainer.innerHTML += await generateTemplate(
+      "./templates/othersites.hbs",
+      links
+    );
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 async function main() {
   try {
-    // await generateOtherJokes("/api/");
-    // await generateOtherSites("/api");
-    // console.log("main metode");
     await generateJokes("/api/jokes");
-    // let jokes = await get("/jokes");
-    // jokeContainer.innerHTML += await generateJokes();
+    await generateOtherSites("/api/othersites");
   } catch (error) {
     console.log(error.name + ": " + error.message);
   }

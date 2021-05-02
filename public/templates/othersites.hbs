@@ -1,9 +1,10 @@
 <table>
     {{#each jokes}}
     <tr>
-        <td>{{name}}</td>
-        <td>{{setup}}</td>
-        <td>{{punchline}}</td>
+        <td>
+        <a href="{{address}}"> {{name}} </a>
+        </td>
+        <td>{{secret}}</td>
     </tr>
     {{/each}}
 </table>

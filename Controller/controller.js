@@ -39,4 +39,4 @@ exports.get = async function (url) {
     throw new Error(respons.status);
   }
   return await respons.json();
-}
+};
