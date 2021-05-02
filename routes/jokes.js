@@ -1,17 +1,14 @@
-import express from "express";
-import { createJoke, getJokes } from "../controller/controller.js";
+const express = require("express");
+const controller = require("../controller/controller");
 const router = express.Router();
 
-router.use(express.static("./public"));
-router.use(express.json());
+const jokeSitesUrl = "https://krdo-joke-registry.herokuapp.com/api/services";
 
-//*Fejlen er formentlig herunder
 router
   .get("/api/jokes", async (request, response) => {
     try {
-      let jokes = await getJokes();
+      let jokes = await controller.getJokes();
       response.send(jokes);
-      // response.sendFile("/jokes.html", { root: "../JokeService/public" });
     } catch (e) {
       sendStatus(e, response);
     }
@@ -22,37 +19,32 @@ router
       let name = request.body.name;
       let setup = request.body.setup;
       let punchline = request.body.punchline;
-      const joke = await createJoke(name, setup, punchline);
+      const joke = await controller.createJoke(name, setup, punchline);
       if (joke !== undefined) {
-        response.send({ message: "Joke saved!" });
+        response.redirect("/");
       } else {
-        response.send({
-          message: "Joke ikke oprettet, da den findes allerede",
-        });
       }
     } catch (e) {
       sendStatus(e, response);
     }
+  })
+  .get("/api/othersites", async (request, response) => {
+    try {
+      let link = await controller.get(jokeSitesUrl);
+      response.send(link);
+    } catch (e) {
+      sendStatus(e, response);
+    }
+  })
+  .get("/api/otherjokes/:site", async (request, response) => {
+    try {
+      let site = request.params.site;
+      let links = await controller.get("https://" + site + "/api/jokes");
+      response.send(links);
+    } catch (e) {
+      sendStatus(e, response);
+    }
   });
-
-// router.get("/api/othersites", async (request, response) => {
-//   try {
-//     response.sendFile("/othersites.html", {
-//       root: "../jokeservice/public",
-//     });
-//   } catch (e) {
-//     sendStatus(e, response);
-//   }
-// });
-// router.get("/api/otherjokes/:site", async (request, response) => {
-//   try {
-//     response.sendFile("/otherjokes.html", {
-//       root: "../jokeservice/public",
-//     });
-//   } catch (e) {
-//     sendStatus(e, response);
-//   }
-// });
 
 function sendStatus(e, response) {
   console.error("Exception: " + e);
@@ -60,4 +52,4 @@ function sendStatus(e, response) {
   response.status(500).send(e);
 }
 
-export default router;
+module.exports = router;

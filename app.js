@@ -1,16 +1,16 @@
-//import {generateJokes} from "./controller/controller.js";
-import config from "./config.js";
-import express from "express";
-import jokesRouter from "./routes/jokes.js";
+
+const express = require("express");
+const config = require("./config");
 
 const app = express();
+
+app.use(express.static(__dirname + "/public"));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use("/", require("./routes/jokes"));
 
 const port = process.env.PORT || config.localPort; // Heroku
 app.listen(port);
 console.log("Listening on port " + port + " ...");
-app.use(express.urlencoded({ extended: true }));
-app.use(jokesRouter);
 
-
-
-export default app;
+module.exports = app;

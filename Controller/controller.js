@@ -1,9 +1,7 @@
-import mongoose from "mongoose";
-import jokes from "../models/jokes.js";
-import config from "../config.js";
-// import router from "../routes/jokes.js";
-// import {get, post} from "../public/api/jokes.js";
-// import app from "../app.js";
+const mongoose = require("mongoose");
+const jokes = require("../models/jokes");
+const config = require("../config");
+const fetch = require("node-fetch");
 
 mongoose.connect(
   config.databaseURI,
@@ -14,10 +12,14 @@ mongoose.connect(
   () => console.log("Connected to DB!")
 );
 
-export async function createJoke(name, setup, punchline) {
+exports.createJoke = async function (name, setup, punchline) {
   const jokeSetup = await jokes.findOne().where("setup").equals(setup).exec();
-  const jokePunchline = await jokes.findOne().where("punchline").equals(punchline).exec();
-  if (!jokeSetup!= undefined && !jokePunchline != undefined) {
+  const jokePunchline = await jokes
+    .findOne()
+    .where("punchline")
+    .equals(punchline)
+    .exec();
+  if (!jokeSetup && !jokePunchline) {
     console.log("joke lavet!");
     return await jokes.create({
       name,
@@ -25,16 +27,16 @@ export async function createJoke(name, setup, punchline) {
       punchline,
     });
   }
+};
+
+exports.getJokes = async function () {
+  return jokes.find().exec();
+};
+
+exports.get = async function (url) {
+  const respons = await fetch(url);
+  if (respons.status !== 200) {
+    throw new Error(respons.status);
+  }
+  return await respons.json();
 }
-
-// createJoke(
-//   "Patrick - Kongen af far humor",
-//   "Hvad kalder man to lamaer, der spiser hestenes hø?",
-//   "Ballamaere"
-// );
-
-export async function getJokes() {
-  return await jokes.find().exec();
-}
-
-

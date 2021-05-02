@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const jokeServiceSchema = new mongoose.Schema({
   name: String,
@@ -6,4 +6,4 @@ const jokeServiceSchema = new mongoose.Schema({
   punchline: String,
 });
 
-export default mongoose.model("DBJS", jokeServiceSchema);
+module.exports = mongoose.model("DBJS", jokeServiceSchema);
